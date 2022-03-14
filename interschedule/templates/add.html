@@ -1,0 +1,27 @@
+<html>
+  <head></head>
+  
+  <body>
+    <h2> Schedule an interview </h2>
+    <form action='' method='post'>
+      {% csrf_token %}
+      <label> Interviewees: </label>
+
+      {% for ob in list %}
+      <input type="checkbox" id="intrv_name" name="interviewees" value="{{ob.interviewee_id}}">
+      <label for="{{ob.interviewee_id}}"> {{ob.f_name}} {{ob.l_name}} </label>
+      {% endfor %}
+      <br> <br>
+      <br>
+      <label for="stime"> Start time: </label>
+      <input type="datetime-local" id="st" name="st" required><br><br>
+      <label for="etime">End time:</label>
+      <input type="datetime-local" id="et" name="et" required>
+      <br><br>
+      <input type="submit" value="Schedule">
+
+    </form>
+    <p> {{error}} </p>
+  </body>
+
+</html>

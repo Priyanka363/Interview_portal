@@ -1,0 +1,34 @@
+<html>
+
+<head></head>
+
+<body>
+    
+    {% if in_details|length == 0 %}
+    No incoming interviews
+
+    {% else %}
+    <!-- <tr>
+      <th>Interviewee Name</th>
+      <th>Start time</th>
+      <th>End time</th>
+    </tr>  -->
+    <h2> All the upcoming interviews</h2>
+    {% for interview in in_details %}
+
+    {% for intrv in interview.interviewees.all %}
+    {{intrv.f_name}} {{intrv.l_name}}
+    {% endfor %}
+
+    <li> {{interview.st_time}} {{interview.end_time}} </li>
+    <form action='update/{{interview.id}}' , method='GET'>
+      <input type="submit" value="Edit">  </input>
+    </form>
+    <br><br>
+    {% endfor %}
+
+    {% endif %}
+
+</body>
+
+</html>
